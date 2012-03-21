@@ -2,20 +2,28 @@
 
 namespace Jimdo\JimKanWall\ImportBundle\FileLocator;
 
-use \Symfony\Component\Finder\Finder;
+use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocatorFile;
+use \Jimdo\JimKanWall\ImportBundle\Exception\NoMatchingFileException;
+
 
 class FileLocator
 {
     private $finder;
+    private $file;
 
-    public function __construct($finder) {
+    public function __construct(\Symfony\Component\Finder\Finder $finder) {
         $this->finder = $finder;
     }
 
     public function getOldestFile($directory)
     {
         $files = $this->finder->files()->in($directory)->name('*.json')->sortByName()->getIterator();
-        
-        return $files->current();
+
+        $importFile = $files->current();
+
+        if(!isset($importFile)) {
+           throw new NoMatchingFileException('No matching file for import found.');
+        }
+        return $importFile;
     }
 }

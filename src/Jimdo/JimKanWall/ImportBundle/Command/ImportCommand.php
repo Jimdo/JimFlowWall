@@ -9,35 +9,35 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocator;
 use \Symfony\Component\Finder\Finder;
+use \Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use \Jimdo\JimKanWall\ImportBundle\Exception\NoMatchingFileException;
 
-class ImportCommand extends Command
+class ImportCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
             ->setName('jimkanwall:import')
-            ->setDescription('Greet someone')
+            ->setDescription('Import of json files')
             ->addArgument('dir', InputArgument::REQUIRED, 'Directory of import')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dir = $input->getArgument('dir');
+        $directory = $input->getArgument('dir');
 
-        $finder = new Finder();
-        $fileLocator = new FileLocator($finder);
-        $importFile = $fileLocator->getOldestFile($dir);
+        $importRunner = $this->getContainer()->get('import_runner');
+        
+        try {
+            $importRunner->run($directory);
+        } catch (NoMatchingFileException $e) {
+            $output->writeln(sprintf('<comment>%s</comment>', $e->getMessage()));
 
-        if(!isset($importFile)) {
-            $output->writeln('<comment>No file to import</comment>');
         }
-        else {
-            $string = file_get_contents($importFile);
-            $json = json_decode($string);
 
-            echo $json->board->info->date;
-        }
+
+        
 
 
     }

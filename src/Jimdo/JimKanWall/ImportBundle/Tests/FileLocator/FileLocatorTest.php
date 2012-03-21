@@ -9,39 +9,39 @@ class FileLocatorTest extends TestCase
 {
     public function testGetReturnOldestFileShouldRunWithGivenParams()
     {
-        $finderStub = $this->getMock('\Symfony\Component\Finder\Finder', array(
+        $finderMock = $this->getMock('\Symfony\Component\Finder\Finder', array(
                                                       'in', 'name', 'files', 'sortByName', 'getIterator'
                                                  ), array(), '', FALSE);
 
 
-        $iteratorStub = $this->getMock('\ArrayIterator', array(
+        $iteratorMock = $this->getMock('\ArrayIterator', array(
                                                       'current'
                                                  ), array(), '', FALSE);
 
-        $iteratorStub->expects($this->exactly(1))
+        $iteratorMock->expects($this->once())
                 ->method('current');
 
-        $finderStub->expects($this->exactly(1))
+        $finderMock->expects($this->exactly(1))
                 ->method('in')
-                ->will($this->returnValue($finderStub));
+                ->will($this->returnValue($finderMock));
 
-        $finderStub->expects($this->exactly(1))
+        $finderMock->expects($this->exactly(1))
                 ->method('name')
-                ->will($this->returnValue($finderStub));
+                ->will($this->returnValue($finderMock));
 
-        $finderStub->expects($this->exactly(1))
+        $finderMock->expects($this->exactly(1))
                 ->method('files')
-                ->will($this->returnValue($finderStub));
+                ->will($this->returnValue($finderMock));
 
-        $finderStub->expects($this->exactly(1))
+        $finderMock->expects($this->exactly(1))
                 ->method('sortByName')
-                ->will($this->returnValue($finderStub));
+                ->will($this->returnValue($finderMock));
 
-        $finderStub->expects($this->exactly(1))
+        $finderMock->expects($this->exactly(1))
                 ->method('getIterator')
-                ->will($this->returnValue($iteratorStub));
+                ->will($this->returnValue($iteratorMock));
 
-        $fileLocator = new FileLocator($finderStub);
+        $fileLocator = new FileLocator($finderMock);
 
         $fileLocator->getOldestFile('/klopfer');
 
