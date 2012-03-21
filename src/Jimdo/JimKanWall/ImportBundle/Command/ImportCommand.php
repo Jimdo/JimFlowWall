@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocator;
-use Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocatorDirectory;
+use \Symfony\Component\Finder\Finder;
 
 class ImportCommand extends Command
 {
@@ -25,16 +25,15 @@ class ImportCommand extends Command
     {
         $dir = $input->getArgument('dir');
 
-        $fileLocatorDirectory = new FileLocatorDirectory($dir);
-        $file_ends_with = array('json');
-        $fileLocator = new FileLocator($file_ends_with);
-        $importFile =$fileLocator->getOldestFile($fileLocatorDirectory);
+        $finder = new Finder();
+        $fileLocator = new FileLocator($finder);
+        $importFile = $fileLocator->getOldestFile($dir);
 
-        if(!$importFile) {
+        if(!isset($importFile)) {
             $output->writeln('<comment>No file to import</comment>');
         }
         else {
-            $string = file_get_contents($importFile->getName());
+            $string = file_get_contents($importFile);
             $json = json_decode($string);
 
             echo $json->board->info->date;

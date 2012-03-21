@@ -3,41 +3,49 @@
 namespace Jimdo\JimKanWall\ImportBundle\Tests\FileLocator;
 
 use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocator;
-use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocatorDirectory;
-use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocatorFile;
 use \Jimdo\JimKanWall\ImportBundle\Tests\TestCase;
 
 class FileLocatorTest extends TestCase
 {
-    public function testItShouldReturnAFile()
+    public function testGetReturnOldestFileShouldRunWithGivenParams()
     {
-        $fileLocator = new FileLocator(array('json'));
+        $finderStub = $this->getMock('\Symfony\Component\Finder\Finder', array(
+                                                      'in', 'name', 'files', 'sortByName', 'getIterator'
+                                                 ), array(), '', FALSE);
 
-        $file = $this->aFile()->build();
 
-        $directory = $this->aStub('\Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocatorDirectory')->with('getFiles', array($file))->build();
+        $iteratorStub = $this->getMock('\ArrayIterator', array(
+                                                      'current'
+                                                 ), array(), '', FALSE);
 
-        $this->assertEquals($file, $fileLocator->getOldestFile($directory));
+        $iteratorStub->expects($this->exactly(1))
+                ->method('current');
+
+        $finderStub->expects($this->exactly(1))
+                ->method('in')
+                ->will($this->returnValue($finderStub));
+
+        $finderStub->expects($this->exactly(1))
+                ->method('name')
+                ->will($this->returnValue($finderStub));
+
+        $finderStub->expects($this->exactly(1))
+                ->method('files')
+                ->will($this->returnValue($finderStub));
+
+        $finderStub->expects($this->exactly(1))
+                ->method('sortByName')
+                ->will($this->returnValue($finderStub));
+
+        $finderStub->expects($this->exactly(1))
+                ->method('getIterator')
+                ->will($this->returnValue($iteratorStub));
+
+        $fileLocator = new FileLocator($finderStub);
+
+        $fileLocator->getOldestFile('/klopfer');
+
     }
 
-    public function testItShouldReturnTheOldestFile()
-    {
-        $fileLocator = new FileLocator(array('json'));
-
-        $aFile = $this->aFile('@1331306743')->build();
-        $bFile = $this->aFile('@1331306741')->build();
-        $cFile = $this->aFile('@1331306745')->build();
-
-        $files = array($aFile, $bFile, $cFile);
-
-        $directory = $this->aStub('\Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocatorDirectory')->with('getFiles', $files)->build();
-
-        $this->assertEquals(date_format($bFile->getCreatedAt(), 'U'), date_format($fileLocator->getOldestFile($directory)->getCreatedAt(), 'U'));
-    }
-
-    private function aFile($timestamp = '@1331306742')
-    {
-        return $this->aStub('\Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocatorFile')->with('getCreatedAt', new \DateTime($timestamp));
-    }
 
 }

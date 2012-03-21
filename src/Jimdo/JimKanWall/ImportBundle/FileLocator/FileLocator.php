@@ -2,22 +2,20 @@
 
 namespace Jimdo\JimKanWall\ImportBundle\FileLocator;
 
-use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocatorDirectory;
+use \Symfony\Component\Finder\Finder;
 
 class FileLocator
 {
-    private $filetypes;
+    private $finder;
 
-    public function __construct($filetypes) {
-        $this->filetypes = $filetypes;
+    public function __construct($finder) {
+        $this->finder = $finder;
     }
 
     public function getOldestFile($directory)
     {
-        $files = $directory->getFiles($this->filetypes);
-
-        usort($files, array('Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocatorDirectory', '_cmpDateTimeAsc'));
-
-        return isset($files[0]) ? $files[0] : null;
+        $files = $this->finder->files()->in($directory)->name('*.json')->sortByName()->getIterator();
+        
+        return $files->current();
     }
 }
