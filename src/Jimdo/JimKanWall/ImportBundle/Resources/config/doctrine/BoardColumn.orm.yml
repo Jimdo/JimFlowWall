@@ -1,5 +1,6 @@
 Jimdo\JimKanWall\ImportBundle\Entity\BoardColumn:
   type: entity
+  repositoryClass: Jimdo\JimKanWall\ImportBundle\Entity\BoardColumnRepository
   table: null
   fields:
     id:

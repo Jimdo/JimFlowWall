@@ -43,7 +43,7 @@ class SnapShot
     /**
      * Set createdAt
      *
-     * @param datetime $createdAt
+     * @param \datetime $createdAt
      */
     public function setCreatedAt($createdAt)
     {
@@ -53,7 +53,7 @@ class SnapShot
     /**
      * Get createdAt
      *
-     * @return datetime 
+     * @return \datetime
      */
     public function getCreatedAt()
     {

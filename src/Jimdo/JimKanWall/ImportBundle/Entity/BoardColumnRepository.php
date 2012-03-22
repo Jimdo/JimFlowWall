@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class BoardColumnRepository extends EntityRepository
 {
+  public function getColumnsByBoardIdOrderedAsc($board_id)
+    {
+        $qb = $this->createQueryBuilder('b')
+                   ->select('b')
+                   ->where('b.board = ?1')
+                   ->setParameter(1, $board_id)
+                   ->addOrderBy('b.ordering', 'ASC');
+
+
+        return $qb->getQuery()->getResult();
+    }
 }

@@ -13,12 +13,12 @@ class FileLoader
 
     public function getContentAsJsonObject($splFileInfo)
     {
-        $spfFileObject = $splFileInfo->openFile();
+        $splFileObject = $splFileInfo->openFile();
 
         $content = '';
 
-        while (!$spfFileObject->eof()) {
-            $content .= $spfFileObject->fgets();
+        while (!$splFileObject->eof()) {
+            $content .= $splFileObject->fgets();
         }
 
         return json_decode($content);

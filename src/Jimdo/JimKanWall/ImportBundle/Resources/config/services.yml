@@ -1,4 +1,9 @@
 services:
+  jimdo.json_to_ticket_mapper:
+    class: Jimdo\JimKanWall\ImportBundle\Mapper\JsonToTicketMapper
+    arguments:
+      - @doctrine.orm.entity_manager
+
   jimdo.file_loader:
     class: Jimdo\JimKanWall\ImportBundle\FileHandler\FileLoader
 
@@ -15,3 +20,4 @@ services:
     arguments:
       - @jimdo.file_locator
       - @jimdo.file_loader
+      - @jimdo.json_to_ticket_mapper

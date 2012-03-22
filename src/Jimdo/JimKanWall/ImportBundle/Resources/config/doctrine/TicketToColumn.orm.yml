@@ -1,16 +1,25 @@
 Jimdo\JimKanWall\ImportBundle\Entity\TicketToColumn:
   type: entity
   table: null
+  id:
+    id:
+      associationKey: true
+    snapShot:
+      associationKey: true
+
   fields:
     id:
       type: string
       length: 15
       id: true
+
   manyToOne:
-    boardColumn:
-      targetEntity: BoardColumn
-      inversedBy: ticketsInColumn
     snapShot:
       targetEntity: SnapShot
       inversedBy: ticketsInSnapShot
+    boardColumn:
+      targetEntity: BoardColumn
+      inversedBy: ticketsInColumn
+
+
   lifecycleCallbacks: {  }

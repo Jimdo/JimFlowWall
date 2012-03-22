@@ -5,6 +5,7 @@ namespace Jimdo\JimKanWall\ImportBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * 
  * Jimdo\JimKanWall\ImportBundle\Entity\BoardColumn
  */
 class BoardColumn
