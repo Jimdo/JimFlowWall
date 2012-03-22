@@ -1,0 +1,16 @@
+Jimdo\JimKanWall\ImportBundle\Entity\SnapShot:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    createdAt:
+      type: datetime
+  manyToOne:
+    board:
+      targetEntity: Board
+      inversedBy: boardSnapShots
+  lifecycleCallbacks: {  }

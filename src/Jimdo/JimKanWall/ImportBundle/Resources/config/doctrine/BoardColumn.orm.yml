@@ -1,0 +1,20 @@
+Jimdo\JimKanWall\ImportBundle\Entity\BoardColumn:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+    ordering:
+      type: integer
+  manyToOne:
+    board:
+      targetEntity: Board
+      inversedBy: boardColums
+
+  lifecycleCallbacks: {  }

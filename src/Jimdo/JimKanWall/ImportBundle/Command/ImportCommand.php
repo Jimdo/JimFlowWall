@@ -27,7 +27,7 @@ class ImportCommand extends ContainerAwareCommand
     {
         $directory = $input->getArgument('dir');
 
-        $importRunner = $this->getContainer()->get('import_runner');
+        $importRunner = $this->getContainer()->get('jimdo.import_runner');
         
         try {
             $importRunner->run($directory);
