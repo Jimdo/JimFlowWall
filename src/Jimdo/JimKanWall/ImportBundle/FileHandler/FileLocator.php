@@ -1,15 +1,13 @@
 <?php
 
-namespace Jimdo\JimKanWall\ImportBundle\FileLocator;
+namespace Jimdo\JimKanWall\ImportBundle\FileHandler;
 
-use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocatorFile;
 use \Jimdo\JimKanWall\ImportBundle\Exception\NoMatchingFileException;
 
 
 class FileLocator
 {
     private $finder;
-    private $file;
 
     public function __construct(\Symfony\Component\Finder\Finder $finder) {
         $this->finder = $finder;

@@ -1,9 +1,12 @@
 services:
+  jimdo.file_loader:
+    class: Jimdo\JimKanWall\ImportBundle\FileHandler\FileLoader
+
   jimdo.finder:
     class: Symfony\Component\Finder\Finder
 
   jimdo.file_locator:
-    class: Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocator
+    class: Jimdo\JimKanWall\ImportBundle\FileHandler\FileLocator
     arguments:
       - @jimdo.finder
 
@@ -11,3 +14,4 @@ services:
     class: Jimdo\JimKanWall\ImportBundle\ImportRunner\ImportRunner
     arguments:
       - @jimdo.file_locator
+      - @jimdo.file_loader

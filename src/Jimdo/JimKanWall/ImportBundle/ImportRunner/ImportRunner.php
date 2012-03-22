@@ -2,25 +2,25 @@
 
 namespace Jimdo\JimKanWall\ImportBundle\ImportRunner;
 
-use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocator;
+use \Jimdo\JimKanWall\ImportBundle\FileHandler\FileLocator;
 use \Jimdo\JimKanWall\ImportBundle\Exception\NoMatchingFileException;
-use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocatorFile;
 
 class ImportRunner
 {
     private $fileLocator;
+    private $fileLoader;
 
-    public function __construct($fileLocator) {
+    public function __construct($fileLocator, $fileLoader) {
         $this->fileLocator = $fileLocator;
+        $this->fileLoader = $fileLoader;
     }
 
     public function run($directory)
     {
         $importFile = $this->fileLocator->getOldestFile($directory);
 
+        $jsonContent = $this->fileLoader->getContentAsJsonObject($importFile);
 
-        $string = file_get_contents($importFile);
-
-        $jsonSnapShot = json_decode($string);
+        echo var_dump($jsonContent);
     }
 }

@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocator;
+use \Jimdo\JimKanWall\ImportBundle\FileHandler\FileLocator;
 use \Symfony\Component\Finder\Finder;
 use \Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use \Jimdo\JimKanWall\ImportBundle\Exception\NoMatchingFileException;
@@ -35,10 +35,5 @@ class ImportCommand extends ContainerAwareCommand
             $output->writeln(sprintf('<comment>%s</comment>', $e->getMessage()));
 
         }
-
-
-        
-
-
     }
 }
