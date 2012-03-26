@@ -1,6 +1,6 @@
 <?php
 
-namespace Jimdo\JimKanWall\ImportBundle\Controller;
+namespace Jimdo\JimKanWall\ViewBoardBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
