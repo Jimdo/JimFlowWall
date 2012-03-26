@@ -16,6 +16,10 @@ Jimdo\JimKanWall\ImportBundle\Entity\BoardColumn:
   manyToOne:
     board:
       targetEntity: Board
-      inversedBy: boardColums
+      inversedBy: boardColumns
+  oneToMany:
+    ticketsToColumn:
+      targetEntity: TicketToColumn
+      mappedBy: boardColumn
 
   lifecycleCallbacks: {  }

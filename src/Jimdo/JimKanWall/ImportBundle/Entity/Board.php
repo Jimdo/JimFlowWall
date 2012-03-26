@@ -22,7 +22,7 @@ class Board
     /**
      * @var ArrayCollection $boardColumns
      */
-    private $boardColums;
+    private $boardColumns;
 
     /**
      * @var ArrayCollection $boardSnapShots
@@ -77,7 +77,7 @@ class Board
      */
     public function getBoardColumns()
     {
-        return $this->boardColums;
+        return $this->boardColumns;
     }
 
     /**

@@ -1,0 +1,27 @@
+{% extends 'JimdoJimKanWallImportBundle::layout.html.twig' %}
+
+
+
+{% block body %}
+
+    <h1>{{ snapShot.board.name }} Board</h1>
+
+    <div class="info">
+        scanned at {{ snapShot.createdAt|date("d.m.Y H:s") }}
+    </div>
+
+    <div class="board">
+
+    {% for column in snapShot.board.boardColumns%}
+        <div class="column">
+        {{ column.name }}
+        {% for ticket in column.ticketsToColumn %}
+            <div class="ticket">
+            {{ ticket.id }}
+            </div>
+        {% endfor %}
+        </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

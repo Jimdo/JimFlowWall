@@ -30,6 +30,11 @@ class BoardColumn
      */
     private $board;
 
+    /**
+     * @var ArrayCollection $ticketsToColumn
+     */
+    private $ticketsToColumn;
+
     
     /**
      * Get id
@@ -99,5 +104,15 @@ class BoardColumn
     public function getBoard()
     {
         return $this->board;
+    }
+
+    /**
+     * Get ticketsToColumn
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getTicketsToColumn()
+    {
+        return $this->ticketsToColumn;
     }
 }

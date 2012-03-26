@@ -1,5 +1,6 @@
 Jimdo\JimKanWall\ImportBundle\Entity\Board:
   type: entity
+  repositoryClass: Jimdo\JimKanWall\ImportBundle\Entity\BoardRepository
   table: null
   fields:
     id:
@@ -10,4 +11,11 @@ Jimdo\JimKanWall\ImportBundle\Entity\Board:
     name:
       type: string
       length: 255
+  oneToMany:
+    boardColumns:
+      targetEntity: BoardColumn
+      mappedBy: board
+    boardSnapShots:
+      targetEntity: SnapShot
+      mappedBy: board
   lifecycleCallbacks: {  }

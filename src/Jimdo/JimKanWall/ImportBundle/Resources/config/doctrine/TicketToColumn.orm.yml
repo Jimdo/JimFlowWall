@@ -19,7 +19,7 @@ Jimdo\JimKanWall\ImportBundle\Entity\TicketToColumn:
       inversedBy: ticketsInSnapShot
     boardColumn:
       targetEntity: BoardColumn
-      inversedBy: ticketsInColumn
+      inversedBy: ticketTonColumn
 
 
   lifecycleCallbacks: {  }
