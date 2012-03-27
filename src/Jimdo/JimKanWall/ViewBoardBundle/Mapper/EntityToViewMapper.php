@@ -41,6 +41,7 @@ class EntityToViewMapper
             foreach ($boardColumn->getTicketsToColumn() as $ticketToColumn)
             {
                 $ticket = $this->cachingTicketProviderDecorator->getTicketByCode($ticketToColumn->getId());
+
                 $column->addTicket($ticket);
             }
             $this->boardModel->addColumn($column);
@@ -48,10 +49,7 @@ class EntityToViewMapper
 
         $this->snapShotModel->setBoard($this->boardModel);
 
-
-
         return $this->snapShotModel;
-
     }
 
 }

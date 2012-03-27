@@ -30,7 +30,13 @@ services:
   jimdo.trac_ticket_provider:
     class: Jimdo\JimKanWall\ViewBoardBundle\Model\TracTicketProvider
     arguments:
-      - @jimdo.ticket_model
+      - @jimdo.ticket_factory
+      - @zend.xml_rpc_client
 
-  jimdo.ticket_model:
-    class: Jimdo\JimKanWall\ViewBoardBundle\Model\TicketModel
+  jimdo.ticket_factory:
+    class: Jimdo\JimKanWall\ViewBoardBundle\Model\TicketFactory
+
+  zend.xml_rpc_client:
+    class: Zend_XmlRpc_Client
+    arguments:
+      - "https://%trac_user%:%trac_password%@%trac_url%/trac/login/xmlrpc"

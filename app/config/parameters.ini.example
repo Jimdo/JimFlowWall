@@ -17,3 +17,7 @@
     locale            = en
 
     secret            = ThisTokenIsNotSoSecretChangeIt
+
+    trac_user         = 'jimkanban'
+    trac_password     = 'mypassword'
+    trac_url          = 'trac.example.org'
