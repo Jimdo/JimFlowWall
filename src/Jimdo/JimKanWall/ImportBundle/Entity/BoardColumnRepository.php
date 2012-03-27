@@ -12,14 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class BoardColumnRepository extends EntityRepository
 {
-  public function getColumnsByBoardIdOrderedAsc($board_id)
+  public function getFilledColumnsByBoardIdAndSnapshotIdOrderedAsc($boardId, $snapshotId)
     {
-        $qb = $this->createQueryBuilder('b')
-                   ->select('b')
-                   ->where('b.board = ?1')
-                   ->setParameter(1, $board_id)
-                   ->addOrderBy('b.ordering', 'ASC');
-
+        $qb = $this->createQueryBuilder('bc')
+                   ->select('bc, tc')
+                   ->leftJoin('bc.ticketsToColumn', 'tc')
+                   ->where('tc.snapShot = ?2')
+                   ->orWhere('tc.snapShot is null')
+                   ->andWhere('bc.board = ?1')
+                   ->setParameter(1, $boardId)
+                   ->setParameter(2, $snapshotId)
+                   ->addOrderBy('bc.ordering', 'ASC');
 
         return $qb->getQuery()->getResult();
     }

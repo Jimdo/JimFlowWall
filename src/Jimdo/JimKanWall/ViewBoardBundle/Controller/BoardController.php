@@ -23,19 +23,17 @@ class BoardController extends Controller
     }
 
     /**
-     * @Route("/board/detail/{board_id}", name="board_detail")
+     * @Route("/board/detail/{boardId}", name="board_detail")
      * @Template()
-     * @param $board_id
+     * @param $boardId
      * @return array
      */
-    public function detailAction($board_id)
+    public function detailAction($boardId)
     {
-        $em = $this->get('doctrine')->getEntityManager();
 
-        $snapShots = $em->getRepository('Jimdo\JimKanWall\ImportBundle\Entity\SnapShot')->getNewestSnapShotByBoard($board_id);
+        $entitiToViewMapper = $this->get('jimdo.entity_to_view_mapper');
 
-        $snapShot = $em->getRepository('Jimdo\JimKanWall\ImportBundle\Entity\SnapShot')->getPreBuildSnapShotById($snapShots[0]->getId());
-
+        $snapShot = $entitiToViewMapper->getSnapShotDetail($boardId);
 
         return array('snapShot' => $snapShot);
     }

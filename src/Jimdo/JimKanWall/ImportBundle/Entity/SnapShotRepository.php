@@ -12,29 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class SnapShotRepository extends EntityRepository
 {
-    public function getPreBuildSnapShotById($snapshot_id)
+    public function getNewestSnapShotByBoardId($boardId)
     {
         $qb = $this->createQueryBuilder('s')
-                   ->select('s,b, c, t')
+                   ->select('s, b')
                    ->leftJoin('s.board', 'b')
-                   ->leftJoin('b.boardColumns', 'c')
-                   ->leftJoin('c.ticketsToColumn', 't')
-                   ->where('s.id = ?1')
-                   ->andWhere('t.snapShot = ?1')
-                   ->addOrderBy('c.ordering', 'ASC')
-                   ->setParameter('1', $snapshot_id);
-
-        return $qb->getQuery()->getOneOrNullResult();
-    }
-
-    public function getNewestSnapShotByBoard($board_id)
-    {
-        $qb = $this->createQueryBuilder('s')
-                   ->select('s')
                    ->where('s.board = ?1')
                    ->addOrderBy('s.createdAt', 'DESC')
-                   ->setParameter('1', $board_id);
+                   ->setMaxResults(1)
+                   ->setParameter('1', $boardId);
 
-        return $qb->getQuery()->getResult();
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }

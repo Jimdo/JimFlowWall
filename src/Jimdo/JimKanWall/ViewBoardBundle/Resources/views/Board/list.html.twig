@@ -1,5 +1,5 @@
 <h1>Available Boards:</h1>
 
 {% for board in boards %}
-    <p><a href="{{ path('board_detail', { 'board_id': board.id }) }}">{{ board.name }}</a></p>
+    <p><a href="{{ path('board_detail', { 'boardId': board.id }) }}">{{ board.name }}</a></p>
 {% endfor %}

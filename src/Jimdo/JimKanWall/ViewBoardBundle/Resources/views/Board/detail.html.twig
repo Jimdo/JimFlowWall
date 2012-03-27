@@ -1,7 +1,5 @@
 {% extends 'JimdoJimKanWallViewBoardBundle::layout.html.twig' %}
 
-
-
 {% block body %}
 
     <h1>{{ snapShot.board.name }} Board</h1>
@@ -12,14 +10,16 @@
 
     <div class="board">
 
-    {% for column in snapShot.board.boardColumns%}
+    {% for column in snapShot.board.columns%}
         <div class="column">
-        {{ column.name }}
-        {% for ticket in column.ticketsToColumn %}
-            <div class="ticket">
-            {{ ticket.id }}
-            </div>
-        {% endfor %}
+            {{ column.name }}
+            {% for ticket in column.tickets %}
+                <div class="ticket">
+                <p>#{{ ticket.id }}
+                <p>{{ ticket.title }}
+                <p>{{ ticket.type }}
+                </div>
+            {% endfor %}
         </div>
     {% endfor %}
     </div>
