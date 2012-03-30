@@ -32,6 +32,7 @@ services:
     arguments:
       - @jimdo.ticket_factory
       - @zend.xml_rpc_client
+      - %trac_url%
 
   jimdo.ticket_factory:
     class: Jimdo\JimKanWall\ViewBoardBundle\Model\TicketFactory

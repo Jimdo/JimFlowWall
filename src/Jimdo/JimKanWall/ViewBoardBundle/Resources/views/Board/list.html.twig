@@ -1,5 +1,11 @@
+{% extends 'JimdoJimKanWallViewBoardBundle::layout.html.twig' %}
+
+{% block body %}
+
 <h1>Available Boards:</h1>
 
 {% for board in boards %}
     <p><a href="{{ path('board_detail', { 'boardId': board.id }) }}">{{ board.name }}</a></p>
 {% endfor %}
+
+{% endblock %}

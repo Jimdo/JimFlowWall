@@ -8,6 +8,7 @@ class TicketModel {
     private $id;
     private $title;
     private $type;
+    private $url;
 
 
     public function setId($id)
@@ -38,5 +39,15 @@ class TicketModel {
     public function getType()
     {
         return $this->type;
+    }
+
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

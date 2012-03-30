@@ -9,12 +9,16 @@ class TracTicketProvider implements TicketProviderInterface {
 
     const CODE_STARTS_WITH = 'T';
     private $ticketFactory;
-    private $xml_rpc_client;
+    private $xmlRpcClient;
+    private $tracUrl;
 
-    public function __construct(TicketFactory $ticketFactory, $xmlRpcClient)
+
+
+    public function __construct(TicketFactory $ticketFactory, $xmlRpcClient, $tracUrl)
     {
         $this->ticketFactory = $ticketFactory;
         $this->xmlRpcClient = $xmlRpcClient;
+        $this->tracUrl = $tracUrl;
     }
 
     public function getTicketByCode($code)
@@ -30,6 +34,7 @@ class TracTicketProvider implements TicketProviderInterface {
         $ticket->setTitle($title);
         $ticket->setId($id);
         $ticket->setType($type);
+        $ticket->setUrl(sprintf('https://%s/trac/ticket/%s', $this->tracUrl, $id));
 
         return $ticket;
     }

@@ -1,27 +1,37 @@
 {% extends 'JimdoJimKanWallViewBoardBundle::layout.html.twig' %}
 
 {% block body %}
-
-    <h1>{{ snapShot.board.name }} Board</h1>
-
-    <div class="info">
-        scanned at {{ snapShot.createdAt|date("d.m.Y H:s") }}
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand">{{snapShot.board.name}} Board</a>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2 offset10">
+            <span class="badge badge-inverse">last scan at {{ snapShot.createdAt|date("d.m.Y H:s") }}</span>
+        </div>
     </div>
 
-    <div class="board">
 
-    {% for column in snapShot.board.columns%}
-        <div class="column">
-            {{ column.name }}
-            {% for ticket in column.tickets %}
-                <div class="ticket">
-                <p>#{{ ticket.id }}
-                <p>{{ ticket.title }}
-                <p>{{ ticket.type }}
+    <div class="container-fluid">
+        <div class="row-fluid">
+
+            {% for column in snapShot.board.columns%}
+                <div class="span1">
+                    <h4>{{column.name}}</h4>
+                        {% for ticket in column.tickets %}
+                        <div class="ticket">
+                            <a href="{{ ticket.url }}" target="_blank" class="ticket-id">#{{ ticket.id }}</a>
+                            <div class="ticket-type label label-info">{{ ticket.type }}</div>
+                            <div class="clear"></div>
+                            <div class="ticket-title">{{ ticket.title }}</div>
+                        </div>
+                        {% endfor %}
                 </div>
-            {% endfor %}
+        {% endfor %}
         </div>
-    {% endfor %}
     </div>
 
 {% endblock %}
