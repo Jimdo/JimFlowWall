@@ -21,5 +21,3 @@ AnnotationRegistry::registerFile(__DIR__.'/../vendor/doctrine/orm/lib/Doctrine/O
 // the lazy loading of the init file (which is expensive)
 require_once __DIR__.'/../vendor/swiftmailer/swiftmailer/lib/classes/Swift.php';
 Swift::registerAutoload(__DIR__.'/../vendor/swiftmailer/swiftmailer/lib/swift_init.php');
-
-set_include_path(__DIR__.'/../vendor/wesrc/yaZF1m/library');

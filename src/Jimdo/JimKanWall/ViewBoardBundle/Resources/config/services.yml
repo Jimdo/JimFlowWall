@@ -38,6 +38,6 @@ services:
     class: Jimdo\JimKanWall\ViewBoardBundle\Model\TicketFactory
 
   zend.xml_rpc_client:
-    class: Zend_XmlRpc_Client
+    class: Zend\XmlRpc\Client
     arguments:
       - "https://%trac_user%:%trac_password%@%trac_url%/trac/login/xmlrpc"

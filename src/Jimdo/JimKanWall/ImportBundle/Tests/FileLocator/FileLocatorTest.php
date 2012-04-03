@@ -2,12 +2,12 @@
 
 namespace Jimdo\JimKanWall\ImportBundle\Tests\FileLocator;
 
-use \Jimdo\JimKanWall\ImportBundle\FileLocator\FileLocator;
+use \Jimdo\JimKanWall\ImportBundle\FileHandler\FileLocator;
 use \Jimdo\JimKanWall\ImportBundle\Tests\TestCase;
 
 class FileLocatorTest extends TestCase
 {
-    public function testGetReturnOldestFileShouldRunWithGivenParams()
+    public function testGetReturnOldestFileShouldRunWithGivenParamsAndThrowGivenException()
     {
         $finderMock = $this->getMock('\Symfony\Component\Finder\Finder', array(
                                                       'in', 'name', 'files', 'sortByName', 'getIterator'
@@ -40,6 +40,8 @@ class FileLocatorTest extends TestCase
         $finderMock->expects($this->exactly(1))
                 ->method('getIterator')
                 ->will($this->returnValue($iteratorMock));
+
+        $this->setExpectedException('Jimdo\JimKanWall\ImportBundle\Exception\NoMatchingFileException');
 
         $fileLocator = new FileLocator($finderMock);
 
