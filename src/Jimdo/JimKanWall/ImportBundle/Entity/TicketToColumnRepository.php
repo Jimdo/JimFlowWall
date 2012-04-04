@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class TicketToColumnRepository extends EntityRepository
 {
+    public function getTicketInSnapShot($code, $snapShotId)
+    {
+        $qb = $this->createQueryBuilder('tc')
+                   ->select('tc')
+                   ->leftJoin('tc.snapShot', 's')
+                   ->where('s.id = ?1')
+                   ->andWhere('tc.id = ?2')
+                   ->setMaxResults(1)
+                   ->setParameter('1', $snapShotId)
+                   ->setParameter('2', $code);
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }

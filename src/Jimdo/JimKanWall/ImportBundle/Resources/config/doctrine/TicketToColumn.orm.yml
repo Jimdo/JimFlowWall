@@ -1,5 +1,6 @@
 Jimdo\JimKanWall\ImportBundle\Entity\TicketToColumn:
   type: entity
+  repositoryClass: Jimdo\JimKanWall\ImportBundle\Entity\TicketToColumnRepository
   table: null
   id:
     id:
