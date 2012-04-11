@@ -13,7 +13,8 @@
         "schnipseljagd/testdatabuilder":  "dev-master",
         "mopa/bootstrap-bundle": "dev-master",
         "twitter/bootstrap": "master",
-        "zf2": "master"
+        "zf2": "master",
+        "leafo/lessphp": "master"
     },
 
     "repositories": [
@@ -49,7 +50,21 @@
                         }
                     }
                 }
-           }
+           }, {
+        "type": "package",
+        "package": {
+            "name": "leafo/lessphp",
+            "version": "master",
+            "source": {
+                "url": "https://github.com/leafo/lessphp.git",
+                "type": "git",
+                "reference": "master"
+            },
+            "autoload": {
+                "classmap": [ "./" ]
+            }
+        }
+    }
        ],
 
     "autoload": {

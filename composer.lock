@@ -1,5 +1,5 @@
 {
-    "hash": "2a4aec449473e255833b82382aac9ae3",
+    "hash": "31dd6d1d366fabcf6fdaa1318dac9671",
     "packages": [
         {
             "package": "doctrine/common",
@@ -14,7 +14,7 @@
         {
             "package": "doctrine/orm",
             "version": "2.1.x-dev",
-            "source-reference": "cab10eb96d57573fa9b6381fef0b6d6ac8039454"
+            "source-reference": "57acceaff2d2ca5c047a9fed1d5bbc950df81d16"
         },
         {
             "package": "jms/metadata",
@@ -28,7 +28,12 @@
         {
             "package": "kriswallsmith/assetic",
             "version": "1.0.x-dev",
-            "source-reference": "14505a5dea4c8fbf3513b70608ba585d5235ee8b"
+            "source-reference": "dc073c2a96ac0212814da501b00e74d74717935a"
+        },
+        {
+            "package": "leafo/lessphp",
+            "version": "master",
+            "source-reference": "master"
         },
         {
             "package": "monolog/monolog",
@@ -66,7 +71,7 @@
         {
             "package": "symfony/assetic-bundle",
             "version": "2.0-dev",
-            "source-reference": "77c256f53331a60e1c4b4cc4dc476d84da58efaf"
+            "source-reference": "3515e6f0ab1e628bd9208a0d4316d011511a99cb"
         },
         {
             "package": "symfony/symfony",
@@ -75,11 +80,13 @@
         {
             "package": "twig/extensions",
             "version": "dev-master",
-            "source-reference": "1dfff8e793f50f651c4f74f796c2c68a4aee3147"
+            "source-reference": "4c831657215e51568fcb31bb9142e827f9a69bd5"
         },
         {
             "package": "twig/twig",
-            "version": "1.6.4"
+            "version": "dev-master",
+            "source-reference": "fd634d1af20fb41dd4e9f7b23806513a6a6b8110",
+            "alias": "1.7.9999999.9999999-dev"
         },
         {
             "package": "twitter/bootstrap",
