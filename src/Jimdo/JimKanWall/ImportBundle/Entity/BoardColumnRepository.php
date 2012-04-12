@@ -16,10 +16,8 @@ class BoardColumnRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('bc')
                    ->select('bc, tc')
-                   ->leftJoin('bc.ticketsToColumn', 'tc')
-                   ->where('tc.snapShot = ?2')
-                   ->orWhere('tc.snapShot is null')
-                   ->andWhere('bc.board = ?1')
+                   ->leftJoin('bc.ticketsToColumn', 'tc', 'with', 'tc.snapShot = ?2')
+                   ->where('bc.board = ?1')
                    ->setParameter(1, $boardId)
                    ->setParameter(2, $snapshotId)
                    ->addOrderBy('bc.ordering', 'ASC');
