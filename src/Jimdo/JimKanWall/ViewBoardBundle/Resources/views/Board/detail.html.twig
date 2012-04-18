@@ -1,20 +1,24 @@
 {% extends 'JimdoJimKanWallViewBoardBundle::layout.html.twig' %}
 
 {% block body %}
+    <script>
+        $('.dropdown-toggle').dropdown()
+    </script>
     <div class="navbar">
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand">{{snapShot.board.name}} Board</a>
+                <div class="btn-group">
+                    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">{{snapShot.board.name}}<span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        {% for board in boards %}
+                            <li><a href="{{ path('board_detail', { 'boardId': board.id }) }}">{{ board.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
+            <div class="nav pull-right">last scan at {{ snapShot.createdAt|date("d.m.Y H:s") }}</div>
         </div>
     </div>
-    <div class="row-fluid">
-        <div class="span2 offset10">
-            <span class="badge badge-inverse">last scan at {{ snapShot.createdAt|date("d.m.Y H:s") }}</span>
-        </div>
-    </div>
-
-
     <div class="container-fluid">
         <div class="row-fluid">
 

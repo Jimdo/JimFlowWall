@@ -30,12 +30,14 @@ class BoardController extends Controller
      */
     public function detailAction($boardId)
     {
+        $em = $this->get('doctrine')->getEntityManager();
+        $boards = $em->getRepository('Jimdo\JimKanWall\ImportBundle\Entity\Board')->findAll();
 
         $entitiToViewMapper = $this->get('jimdo.entity_to_view_mapper');
 
         $snapShot = $entitiToViewMapper->getSnapShotDetail($boardId);
 
-        return array('snapShot' => $snapShot);
+        return array('snapShot' => $snapShot, 'boards' => $boards);
     }
 
 }
