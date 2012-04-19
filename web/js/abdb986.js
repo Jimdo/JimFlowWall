@@ -90,3 +90,4 @@
   })
 
 }( window.jQuery );
+window.setTimeout('location.reload()', 5 * 60 * 1000);
