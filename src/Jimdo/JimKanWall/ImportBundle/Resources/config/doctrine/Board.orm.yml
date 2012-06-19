@@ -14,6 +14,7 @@ Jimdo\JimKanWall\ImportBundle\Entity\Board:
   oneToMany:
     boardColumns:
       targetEntity: BoardColumn
+      cascade:      [persist]
       mappedBy: board
     boardSnapShots:
       targetEntity: SnapShot

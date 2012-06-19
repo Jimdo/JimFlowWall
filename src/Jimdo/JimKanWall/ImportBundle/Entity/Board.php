@@ -71,6 +71,21 @@ class Board
     }
 
     /**
+     *
+     *
+     * @param $boardColumns
+     */
+
+    public function setBoardColumns($boardColumns)
+    {
+        foreach ($boardColumns as $boardColumn) {
+            $boardColumn->setBoard($this);
+        }
+
+        $this->boardColumns = $boardColumns;
+    }
+
+    /**
      * Get boardColumns
      *
      * @return Doctrine\Common\Collections\Collection

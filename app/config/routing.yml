@@ -1,3 +1,8 @@
+JimdoJimKanWallEditBoardBundle:
+    resource: "@JimdoJimKanWallEditBoardBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 JimdoJimKanWallViewBoardBundle:
     resource: "@JimdoJimKanWallViewBoardBundle/Controller/"
     type:     annotation
