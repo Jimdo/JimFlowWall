@@ -11,12 +11,12 @@
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('manage_board_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td><a href="{{ path('manage_board_edit', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>{{ entity.name }}</td>
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('manage_board_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('manage_board_print', { 'id': entity.id }) }}">print qr codes</a>
                     </li>
                     <li>
                         <a href="{{ path('manage_board_edit', { 'id': entity.id }) }}">edit</a>

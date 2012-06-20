@@ -6,6 +6,7 @@
     {{ form_widget(edit_form) }}
     <p>
         <button type="submit">Edit</button>
+        <a href="{{ path('manage_board_print', { 'id': entity.id }) }}">print qr codes</a>
     </p>
 </form>
 

@@ -8,6 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Jimdo\JimKanWall\ImportBundle\Entity\Board;
 use Jimdo\JimKanWall\EditBoardBundle\Form\BoardType;
+use Knp\Snappy\Pdf;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /**
  * Board controller.
@@ -32,12 +35,12 @@ class BoardController extends Controller
     }
 
     /**
-     * Finds and displays a Board entity.
+     * Finds and displays a Board as print pdf.
      *
-     * @Route("/{id}/show", name="manage_board_show")
+     * @Route("/{id}/print", name="manage_board_print")
      * @Template()
      */
-    public function showAction($id)
+    public function printAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -45,14 +48,22 @@ class BoardController extends Controller
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Board entity.');
-        }
+        };
+        
+        $snappy = new Pdf('/usr/local/bin/wkhtmltopdf');
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/pdf');
+        $response->headers->set('Content-Disposition', sprintf('attachment;filename="qrcodes_board_%s.pdf"', $entity->getId()));
 
-        $deleteForm = $this->createDeleteForm($id);
+        $content = $this->renderView('JimdoJimKanWallEditBoardBundle:Board:print.html.twig', array('entity' => $entity));
 
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
+        $blub = $snappy->getOutputFromHtml($content);
+
+        $response->setContent($blub);
+
+        return $response;
     }
+
 
     /**
      * Displays a form to create a new Board entity.

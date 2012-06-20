@@ -1,7 +1,7 @@
 {
     "require": {
         "php":              ">=5.3.2",
-        "symfony/symfony":  ">=2.0.10,<2.1.0-dev",
+        "symfony/symfony":  "2.0.13",
         "doctrine/orm":     ">=2.1.0,<2.2.0-dev",
         "twig/extensions":  "*",
 
@@ -11,9 +11,10 @@
         "sensio/distribution-bundle":     "2.0.*",
         "jms/security-extra-bundle":      "1.0.*",
         "schnipseljagd/testdatabuilder":  "dev-master",
-        "mopa/bootstrap-bundle": "dev-master",
+        "mopa/bootstrap-bundle": "2.0.x-dev",
         "twitter/bootstrap": "master",
-        "zf2": "master"
+        "zf2": "master",
+        "knplabs/knp-snappy": "master"
     },
 
     "repositories": [
