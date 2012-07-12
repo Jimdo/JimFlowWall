@@ -1,5 +1,5 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-
+{% extends 'JimdoJimKanWallEditBoardBundle::layout.html.twig' %}
+{% block body %}
 <h1>Board creation</h1>
 
 <form action="{{ path('manage_board_create') }}" method="post" {{ form_enctype(form) }}>
@@ -7,7 +7,7 @@
 
     {{ form_widget(form._token) }}
 
-    <ul class="boardColumns" data-prototype="{{ form_widget(form.boardColumns.get('prototype')) | e }}">
+    <ul class="boardColumns" id="sortable" data-prototype="{{ form_widget(form.boardColumns.get('prototype')) | e }}">
     </ul>
 
     <p>
@@ -22,26 +22,4 @@
         </a>
     </li>
 </ul>
-
- <script type="text/javascript">
-var collectionHolder = $('ul.boardColumns');
-
-var $addBoardColumnLink = $('<a href="#" class="add_boardcolumn_link">Add a board column</a>');
-var $newLinkLi = $('<li></li>').append($addBoardColumnLink);
-
-jQuery(document).ready(function() {
-    collectionHolder.append($newLinkLi);
-
-});
-    $addBoardColumnLink.on('click', function(e) {
-        e.preventDefault();
-        addBoardColumnForm(collectionHolder, $newLinkLi);
-    });
-
-function addBoardColumnForm(collectionHolder, $newLinkLi) {
-    var prototype = collectionHolder.attr('data-prototype');
-    var newForm = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length);
-    var $newFormLi = $('<li></li>').append(newForm);
-    $newLinkLi.before($newFormLi);
-}
-</script>
+{% endblock %}
