@@ -50,7 +50,7 @@ class BoardController extends Controller
             throw $this->createNotFoundException('Unable to find Board entity.');
         };
         
-        $snappy = new Pdf('/usr/local/bin/wkhtmltopdf');
+        $snappy = new Pdf('/usr/bin/wkhtmltopdf');
         $response = new Response();
         $response->headers->set('Content-Type', 'application/pdf');
         $response->headers->set('Content-Disposition', sprintf('attachment;filename="qrcodes_board_%s.pdf"', $entity->getId()));
