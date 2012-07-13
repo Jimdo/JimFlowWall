@@ -9,7 +9,12 @@ class BoardColumnType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $builder->add('name')
+        $builder->add('name', 'text', array(
+                        'label' => 'Column Name',
+                        'attr' => array(
+                            'class' => 'boardColumn'
+                        )
+                ))
                 ->add('ordering', 'hidden')
         ;
     }

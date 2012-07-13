@@ -3,6 +3,8 @@
 <h1>Board creation</h1>
 
 <form action="{{ path('manage_board_create') }}" method="post" {{ form_enctype(form) }}>
+    {% form_theme form 'JimdoJimKanWallEditBoardBundle::form_row_template.html.twig' %}
+
     {{ form_row(form.name) }}
 
     {{ form_widget(form._token) }}
@@ -11,15 +13,13 @@
     </ul>
 
     <p>
-        <button type="submit">Create</button>
+        <button class="button orange" type="submit">Create</button>
     </p>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('manage_board') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+<div class="action">
+    <a class="button gray right" href="{{ path('manage_board') }}">Back to the list</a>
+</div>
+<div style="clear: both;"></div>
+
 {% endblock %}
