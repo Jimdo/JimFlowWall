@@ -1,0 +1,5 @@
+services:
+  snappy.pdf:
+    class: Knp\Snappy\Pdf
+    arguments:
+      - %wkhtmltopdf_bin_path%

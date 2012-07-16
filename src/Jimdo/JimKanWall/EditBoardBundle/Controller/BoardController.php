@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Jimdo\JimKanWall\ImportBundle\Entity\Board;
 use Jimdo\JimKanWall\EditBoardBundle\Form\BoardType;
-use Knp\Snappy\Pdf;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -49,8 +48,10 @@ class BoardController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Board entity.');
         };
-        
-        $snappy = new Pdf('/usr/bin/wkhtmltopdf');
+
+
+
+        $snappy = $this->get('snappy.pdf');
         $response = new Response();
         $response->headers->set('Content-Type', 'application/pdf');
         $response->headers->set('Content-Disposition', sprintf('attachment;filename="qrcodes_board_%s.pdf"', $entity->getId()));
