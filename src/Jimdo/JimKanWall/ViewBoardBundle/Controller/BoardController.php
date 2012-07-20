@@ -18,7 +18,7 @@ class BoardController extends Controller
     public function listAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
-        $boards = $em->getRepository('Jimdo\JimKanWall\ImportBundle\Entity\Board')->findAll();
+        $boards = $em->getRepository('Jimdo\JimKanWall\ImportBundle\Entity\Board')->findAllOrdered();
 
         return array('boards' => $boards);
     }

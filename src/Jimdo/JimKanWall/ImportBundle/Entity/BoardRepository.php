@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class BoardRepository extends EntityRepository
 {
+    public function findAllOrdered()
+    {
+        $qb = $this->createQueryBuilder('b')
+                   ->select('b')
+                   ->addOrderBy('b.name', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
+
 }

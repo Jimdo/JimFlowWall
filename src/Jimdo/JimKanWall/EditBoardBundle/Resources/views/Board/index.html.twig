@@ -2,11 +2,16 @@
 {% block body %}
 
 <h1>Board list</h1>
-<div class="action">
-                <a class="button gray right" href="{{ path('manage_board_new') }}">Create a new board</a>
-</div>
-<div style="clear: both;"></div>
 
+<div id="menu">
+    <div class="action">
+        <a class="button gray right" href="{{ path('board_list') }}">List boards</a>
+    </div>
+    <div class="action">
+        <a class="button gray right" href="{{ path('manage_board_new') }}">Create a new board</a>
+    </div>
+    <div style="clear: both;"></div>
+</div>
 
 <div id="board_list">
     {% for entity in entities %}

@@ -28,7 +28,7 @@ class BoardController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('JimdoJimKanWallImportBundle:Board')->findAll();
+        $entities = $em->getRepository('JimdoJimKanWallImportBundle:Board')->findAllOrdered();
 
         return array('entities' => $entities);
     }
