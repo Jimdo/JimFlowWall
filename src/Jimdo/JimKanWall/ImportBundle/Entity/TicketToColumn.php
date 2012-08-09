@@ -25,6 +25,11 @@ class TicketToColumn
     private $boardColumn;
 
     /**
+     * @var boolean $is_change
+     */
+    private $is_change = false;
+
+    /**
      * Set id
      *
      * @param String $id
@@ -82,5 +87,25 @@ class TicketToColumn
     public function getBoardColumn()
     {
         return $this->boardColumn;
+    }
+
+    /**
+     * Set is_change
+     *
+     * @param boolean $id
+     */
+    public function setIsChange($is_change)
+    {
+        $this->is_change = $is_change;
+    }
+
+    /**
+     * Get is_change
+     *
+     * @return boolean
+     */
+    public function getIsChange()
+    {
+        return $this->is_change;
     }
 }

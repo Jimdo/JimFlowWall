@@ -25,4 +25,31 @@ class TicketToColumnRepository extends EntityRepository
 
         return $qb->getQuery()->getOneOrNullResult();
     }
+
+    public function getLatestTicketToColumnByTicketId($ticket_id)
+    {
+        $qb = $this->createQueryBuilder('tc')
+                   ->select('tc')
+                   ->InnerJoin('tc.snapShot', 's', 'with', 'tc.snapShot = s.id')
+                   ->where('tc.id = ?1')
+                   ->addOrderBy('s.id', 'DESC')
+                   ->setMaxResults(1)
+                   ->setParameter('1', $ticket_id);
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
+    public function getLatestSnapshotWithChangeByTicketId($ticket_id)
+    {
+        $qb = $this->createQueryBuilder('tc')
+                   ->select('tc')
+                   ->leftJoin('tc.snapShot', 's')
+                   ->where('tc.id = ?1')
+                   ->andWhere('tc.is_change = true')
+                   ->addOrderBy('s.createdAt', 'DESC')
+                   ->setMaxResults(1)
+                   ->setParameter('1', $ticket_id);
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }

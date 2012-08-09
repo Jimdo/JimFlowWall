@@ -9,6 +9,7 @@ class TicketModel {
     private $title;
     private $type;
     private $url;
+    private $last_change;
 
 
     public function setId($id)
@@ -49,5 +50,15 @@ class TicketModel {
     public function getUrl()
     {
         return $this->url;
+    }
+
+    public function setLastChange($last_change)
+    {
+        $this->last_change = $last_change;
+    }
+
+    public function getLastChange()
+    {
+        return $this->last_change;
     }
 }

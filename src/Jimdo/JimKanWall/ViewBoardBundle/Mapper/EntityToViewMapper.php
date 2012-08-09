@@ -42,6 +42,10 @@ class EntityToViewMapper
             {
                 $ticket = $this->cachingTicketProviderDecorator->getTicketByCode($ticketToColumn->getId());
 
+                $last_changed_ticket = $this->em->getRepository('Jimdo\JimKanWall\ImportBundle\Entity\TicketToColumn')->getLatestSnapshotWithChangeByTicketId($ticketToColumn->getId());
+
+                $ticket->setLastChange($last_changed_ticket->getSnapShot()->getCreatedAt());
+
                 $column->addTicket($ticket);
             }
             $this->boardModel->addColumn($column);

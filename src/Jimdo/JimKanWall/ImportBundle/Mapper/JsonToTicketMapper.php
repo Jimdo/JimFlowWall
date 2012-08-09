@@ -46,6 +46,12 @@ class JsonToTicketMapper
             $ticket->setId($information->data);
             $ticket->setBoardColumn($boardColumns[$information->column]);
 
+            $last_ticket_to_column = $this->em->getRepository('Jimdo\JimKanWall\ImportBundle\Entity\TicketToColumn')->getLatestTicketToColumnByTicketId($ticket->getId());
+
+            if (!$last_ticket_to_column || $last_ticket_to_column->getBoardColumn()->getID() != $boardColumns[$information->column]->getId()) {
+
+                $ticket->setIsChange(true);
+            }
             $this->em->persist($ticket);
         }
 

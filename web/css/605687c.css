@@ -36,10 +36,6 @@ body, html {
     float: left;
 }
 
-.right {
-    float: right;
-}
-
 .button.gray {
     padding: 10px 10px;
     -webkit-border-radius: 2px 2px;
@@ -173,6 +169,11 @@ ul.boardColumns {
     float: left;
 }
 
+#menu .action {
+    margin-left: 15px;
+    float:right;
+}
+
 .boardColumns .form_row .field .form_row {
     margin-top: 0px;
     width: 300px;
@@ -184,3 +185,13 @@ ul.boardColumns {
     float: left;
 }
 
+a.boardListEntry:link,a.boardListEntry:visited {
+    font-size: 16px;
+    color: #000000;
+    text-decoration: none;
+}
+
+a.boardListEntry:hover,a.boardListEntry:active {
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #c2ccd1;
+}

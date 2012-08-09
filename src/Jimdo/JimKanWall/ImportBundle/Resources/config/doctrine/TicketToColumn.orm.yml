@@ -13,6 +13,8 @@ Jimdo\JimKanWall\ImportBundle\Entity\TicketToColumn:
       type: string
       length: 15
       id: true
+    is_change:
+      type: boolean
 
   manyToOne:
     snapShot:
