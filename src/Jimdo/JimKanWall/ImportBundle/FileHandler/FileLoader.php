@@ -21,7 +21,7 @@ class FileLoader
             $content .= $splFileObject->fgets();
         }
 
-        //unlink($splFileObject);
+        unlink($splFileObject);
 
         return json_decode($content);
     }
