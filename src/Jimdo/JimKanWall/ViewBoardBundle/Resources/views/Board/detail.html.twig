@@ -31,7 +31,7 @@
                             <div class="ticket-type label label-info">{{ ticket.type }}</div>
                             <div class="clear"></div>
                             <div class="ticket-title">{{ ticket.title }}</div>
-                            <div class="ticket-title">last change {{ ticket.lastChange|date("d.m.Y H:i") }}</div>
+                            <div class="ticket-title">{% if ticket.lastChange %}last change {{ ticket.lastChange|date("d.m.Y H:i") }}{% endif %}</div>
                         </div>
                         {% endfor %}
                 </div>
