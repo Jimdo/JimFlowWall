@@ -28,8 +28,29 @@ body {
 
 #logo {
     float: left;
+    width: 33%;
 }
 
+#boardowner {
+    float: left;
+    width: 32%;
+}
+
+#boardowner span {
+    display: block;
+    text-align: center;
+    color:#505050;
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: -1px -1px 0px #101010, 1px 1px 0px #505050;
+}
+
+span#lastscan {
+    font-size: 14px;
+    font-weight: lighter;
+    color: #aaa;
+    text-shadow: 1px 1px 0px #000;
+}
 #boardselect {
     float: right;
 }
