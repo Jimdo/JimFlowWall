@@ -19,7 +19,6 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Jimdo\JimKanWall\ImportBundle\JimdoJimKanWallImportBundle(),
             new Jimdo\JimKanWall\ViewBoardBundle\JimdoJimKanWallViewBoardBundle(),
-            new \Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new Jimdo\JimKanWall\EditBoardBundle\JimdoJimKanWallEditBoardBundle(),
         );
 

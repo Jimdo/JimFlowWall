@@ -28,13 +28,6 @@ assetic:
     # java: /usr/bin/java
     filters:
         cssrewrite: ~
-        less:
-          node: /usr/local/bin/node
-          node_paths: [/usr/local/lib/node_modules]
-        # closure:
-        #     jar: %kernel.root_dir%/java/compiler.jar
-        # yui_css:
-        #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
 
 # Doctrine Configuration
 doctrine:

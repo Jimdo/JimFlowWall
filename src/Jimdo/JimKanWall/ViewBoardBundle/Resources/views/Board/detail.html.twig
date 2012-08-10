@@ -1,42 +1,45 @@
 {% extends 'JimdoJimKanWallViewBoardBundle::layout.html.twig' %}
 
 {% block body %}
-    <script>
-        $('.dropdown-toggle').dropdown()
-    </script>
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container">
-                <div class="btn-group">
-                    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">{{snapShot.board.name}}<span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        {% for board in boards %}
-                            <li><a href="{{ path('board_detail', { 'boardId': board.id }) }}">{{ board.name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-            <div class="nav pull-right">last scan at {{ snapShot.createdAt|date("d.m.Y H:i") }}</div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row-fluid">
 
-            {% for column in snapShot.board.columns%}
-                <div class="span1">
-                    <h4>{{column.name}}</h4>
-                        {% for ticket in column.tickets %}
-                        <div class="ticket">
-                            <a href="{{ ticket.url }}" target="_blank" class="ticket-id">#{{ ticket.id }}</a>
-                            <div class="ticket-type label label-info">{{ ticket.type }}</div>
-                            <div class="clear"></div>
-                            <div class="ticket-title">{{ ticket.title }}</div>
-                            <div class="ticket-title">{% if ticket.lastChange %}last change {{ ticket.lastChange|date("d.m.Y H:i") }}{% endif %}</div>
-                        </div>
-                        {% endfor %}
-                </div>
+    <div style="display:none">
+        {% for board in boards %}
+        <li><a href="{{ path('board_detail', { 'boardId': board.id }) }}">{{ board.name }}</a></li>
         {% endfor %}
-        </div>
     </div>
 
+<div id="header">
+    <div id="boardselect">
+        <select>
+            <option>Feature Team</option>
+        </select>
+    </div>
+    <div id="logo">
+        <img src="{{ asset('bundles/jimdojimkanwallviewboard/images/jimflow.png') }}" />
+    </div>
+    <div class="clear"></div>
+    </div>
+
+    <div class="board with-{{snapShot.board.columns|length}}-columns">
+        {% for column in snapShot.board.columns%}
+        <div class="column">
+                <div class="header">
+                    <span>{{column.name}}</span>
+                </div>
+                {% for ticket in column.tickets %}
+                <div class="ticket">
+                    <div class="wrapper">
+                        <span class="ticket-meta">
+                            <span class="ticket-id"><a href="{{ ticket.url }}" target="_blank">#{{ ticket.id }}</a></span>
+                            <span class="ticket-type">{{ ticket.type }}</span>
+                        </span>
+                        <span class="ticket-headline">{{ ticket.title }}</span>
+                        <span class="ticket-changedate">{% if ticket.lastChange %}last change {{ ticket.lastChange|date("d.m.Y H:i") }}{% endif %}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <div class="clear"></div>
+    </div>
 {% endblock %}

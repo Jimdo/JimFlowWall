@@ -3,22 +3,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    {% stylesheets filter='less,cssrewrite'
-       '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
-       '@JimdoJimKanWallViewBoardBundle/Resources/public/less/ticket.less'
-    %}
-        <link href="{{ app.request.scheme ~  '://' ~  app.request.host ~ asset_url }}" type="text/css" rel="stylesheet" />
-    {% endstylesheets %}
+        {% stylesheets filter='cssrewrite'
+        'bundles/jimdojimkanwallviewboard/css/*'
+        %}
+            <link href="{{ '//' ~  app.request.host ~ asset_url }}" type="text/css" rel="stylesheet" />
+        {% endstylesheets %}
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-    {% javascripts
-        '@JimdoJimKanWallViewBoardBundle/Resources/public/js/*'
-    %}
-        <script src="{{ app.request.scheme ~  '://' ~  app.request.host ~ asset_url }}"></script>
-    {% endjavascripts %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+        {% javascripts
+            '@JimdoJimKanWallViewBoardBundle/Resources/public/js/*'
+        %}
+            <script src="{{ '//' ~  app.request.host ~ asset_url }}"></script>
+        {% endjavascripts %}
 
-
-    
     </head>
     <body>
         <div id="content">
