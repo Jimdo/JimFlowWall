@@ -49,8 +49,6 @@ class BoardController extends Controller
             throw $this->createNotFoundException('Unable to find Board entity.');
         };
 
-
-
         $snappy = $this->get('snappy.pdf');
         $response = new Response();
         $response->headers->set('Content-Type', 'application/pdf');
