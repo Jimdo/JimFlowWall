@@ -1,0 +1,25 @@
+Jimdo\JimFlow\ImportBundle\Entity\BoardColumn:
+  type: entity
+  repositoryClass: Jimdo\JimFlow\ImportBundle\Entity\BoardColumnRepository
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+    ordering:
+      type: integer
+  manyToOne:
+    board:
+      targetEntity: Board
+      inversedBy: boardColumns
+  oneToMany:
+    ticketsToColumn:
+      targetEntity: TicketToColumn
+      mappedBy: boardColumn
+
+  lifecycleCallbacks: {  }

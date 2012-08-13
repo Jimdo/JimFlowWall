@@ -17,9 +17,9 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new Jimdo\JimKanWall\ImportBundle\JimdoJimKanWallImportBundle(),
-            new Jimdo\JimKanWall\ViewBoardBundle\JimdoJimKanWallViewBoardBundle(),
-            new Jimdo\JimKanWall\EditBoardBundle\JimdoJimKanWallEditBoardBundle(),
+            new Jimdo\JimFlow\ImportBundle\JimdoJimFlowImportBundle(),
+            new Jimdo\JimFlow\ViewBoardBundle\JimdoJimFlowViewBoardBundle(),
+            new Jimdo\JimFlow\EditBoardBundle\JimdoJimFlowEditBoardBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

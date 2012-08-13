@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        {% stylesheets filter='cssrewrite'
+        'bundles/jimdojimflowviewboard/css/*'
+        %}
+            <link href="{{ '//' ~  app.request.host ~ asset_url }}" type="text/css" rel="stylesheet" />
+        {% endstylesheets %}
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+        {% javascripts
+            '@JimdoJimFlowViewBoardBundle/Resources/public/js/*'
+        %}
+            <script src="{{ '//' ~  app.request.host ~ asset_url }}"></script>
+        {% endjavascripts %}
+
+    </head>
+    <body>
+        <div id="content">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>

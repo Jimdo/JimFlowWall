@@ -1,0 +1,143 @@
+/*
+    Document   : jimflow
+    Created on : 10.08.2012, 14:06:45
+    Author     : bjoern@jimdo.com
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body {
+    padding: 20px;
+    background: #eee url('../../bundles/jimdojimflowviewboard/images/cloudy.png');
+    font-family: Helvetia, Arial, sans-serif;
+}
+
+.board {
+    margin-bottom: 30px;
+}
+
+.clear {
+    width: 100%; height: 1px;
+    clear: both;
+}
+
+#header {
+    width: 100%;
+    overflow: hidden;
+}
+
+#logo {
+    float: left;
+    width: 33%;
+}
+
+#boardowner {
+    float: left;
+    width: 32%;
+}
+
+#boardowner span {
+    display: block;
+    text-align: center;
+    color:#505050;
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: -1px -1px 0px #101010, 1px 1px 0px #505050;
+}
+
+span#lastscan {
+    font-size: 14px;
+    font-weight: lighter;
+    color: #aaa;
+    text-shadow: 1px 1px 0px #000;
+}
+#boardselect {
+    float: right;
+}
+
+.column {
+    float: left;
+    overflow: hidden;
+    max-width: 500px;
+    margin-top: 20px;
+}
+
+.with-1-columns .column     { width: 100%; min-width: 150px; }
+.with-2-columns .column     { width: 50%; min-width: 150px; }
+.with-3-columns .column     { width: 33%; min-width: 150px;}
+.with-4-columns .column     { width: 25%; min-width: 150px;}
+.with-5-columns .column     { width: 20%; min-width: 150px;}
+.with-6-columns .column     { width: 16%; min-width: 150px;}
+.with-7-columns .column     { width: 14%; min-width: 150px;}
+.with-8-columns .column     { width: 12%; min-width: 150px;}
+.with-9-columns .column     { width: 11%; min-width: 150px;}
+
+.header {
+    padding-right: 20px;
+    height: 50px;
+}
+
+.header span {
+    display: block;
+    padding: 10px 15px;
+    background: #000 url('../../bundles/jimdojimflowviewboard/images/header-bgr.png') repeat-x;
+    color: #ddd;
+    text-shadow: 1px 1px 0px #000;
+    border-radius: 7px;
+    font-size: 12px;
+    border: 1px solid #666;
+}
+
+.ticket {
+    border: 1px solid #999;
+    background: white url('../../bundles/jimdojimflowviewboard/images/snow.png');
+    border-radius: 5px;
+    margin: 10px 20px 0 0;
+    font-size: 12px;
+}
+
+.ticket .wrapper {
+    padding: 10px;
+}
+
+.ticket span {
+    display: block;
+}
+
+span.ticket-meta {
+    overflow: hidden;
+    padding-bottom: 4px;
+}
+
+span.ticket-id {
+    float: left;
+    font-size: 14px;
+}
+
+span.ticket-id a {
+    color: #000;
+    text-decoration: none;
+}
+
+span.ticket-id a:hover {
+    text-decoration: underline;
+}
+
+span.ticket-type {
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+span.ticket-headline {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+    color: #666;
+}
+
+span.ticket-changedate {
+    padding-top: 4px;
+    font-size: 10px;
+    color: #666;
+}

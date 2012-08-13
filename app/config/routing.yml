@@ -1,15 +1,15 @@
-JimdoJimKanWallEditBoardBundle:
-    resource: "@JimdoJimKanWallEditBoardBundle/Controller/"
+JimdoJimFlowEditBoardBundle:
+    resource: "@JimdoJimFlowEditBoardBundle/Controller/"
     type:     annotation
     prefix:   /
 
-JimdoJimKanWallViewBoardBundle:
-    resource: "@JimdoJimKanWallViewBoardBundle/Controller/"
+JimdoJimFlowViewBoardBundle:
+    resource: "@JimdoJimFlowViewBoardBundle/Controller/"
     type:     annotation
     prefix:   /
 
-JimdoJimKanWallImportBundle:
-    resource: "@JimdoJimKanWallImportBundle/Controller/"
+JimdoJimFlowImportBundle:
+    resource: "@JimdoJimFlowImportBundle/Controller/"
     type:     annotation
     prefix:   /
 

@@ -1,0 +1,19 @@
+{% extends 'JimdoJimFlowEditBoardBundle::layout.html.twig' %}
+{% block body %}
+<h1>Board edit</h1>
+
+<form action="{{ path('manage_board_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {% form_theme edit_form 'JimdoJimFlowEditBoardBundle::form_row_template.html.twig' %}
+
+    {{ form_widget(edit_form) }}
+    <p>
+        <button class="button orange" type="submit">Save</button>
+        <a href="{{ path('manage_board_print', { 'id': entity.id }) }}" class="button gray">print qr codes</a>
+    </p>
+</form>
+
+<div class="action">
+    <a class="button gray right" href="{{ path('manage_board') }}">Back to the list</a>
+</div>
+<div style="clear: both;"></div>
+{% endblock %}

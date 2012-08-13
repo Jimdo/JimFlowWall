@@ -1,0 +1,23 @@
+services:
+  jimdo.json_to_ticket_mapper:
+    class: Jimdo\JimFlow\ImportBundle\Mapper\JsonToTicketMapper
+    arguments:
+      - @doctrine.orm.entity_manager
+
+  jimdo.file_loader:
+    class: Jimdo\JimFlow\ImportBundle\FileHandler\FileLoader
+
+  jimdo.finder:
+    class: Symfony\Component\Finder\Finder
+
+  jimdo.file_locator:
+    class: Jimdo\JimFlow\ImportBundle\FileHandler\FileLocator
+    arguments:
+      - @jimdo.finder
+
+  jimdo.import_runner:
+    class: Jimdo\JimFlow\ImportBundle\ImportRunner\ImportRunner
+    arguments:
+      - @jimdo.file_locator
+      - @jimdo.file_loader
+      - @jimdo.json_to_ticket_mapper

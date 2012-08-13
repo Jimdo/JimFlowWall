@@ -1,0 +1,17 @@
+Jimdo\JimFlow\ImportBundle\Entity\SnapShot:
+  type: entity
+  repositoryClass: Jimdo\JimFlow\ImportBundle\Entity\SnapShotRepository
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    createdAt:
+      type: datetime
+  manyToOne:
+    board:
+      targetEntity: Board
+      inversedBy: boardSnapShots
+  lifecycleCallbacks: {  }

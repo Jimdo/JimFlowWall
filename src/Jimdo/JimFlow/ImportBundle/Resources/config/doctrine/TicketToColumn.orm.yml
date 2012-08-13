@@ -1,0 +1,28 @@
+Jimdo\JimFlow\ImportBundle\Entity\TicketToColumn:
+  type: entity
+  repositoryClass: Jimdo\JimFlow\ImportBundle\Entity\TicketToColumnRepository
+  table: null
+  id:
+    id:
+      associationKey: true
+    snapShot:
+      associationKey: true
+
+  fields:
+    id:
+      type: string
+      length: 15
+      id: true
+    is_change:
+      type: boolean
+
+  manyToOne:
+    snapShot:
+      targetEntity: SnapShot
+      inversedBy: ticketsInSnapShot
+    boardColumn:
+      targetEntity: BoardColumn
+      inversedBy: ticketTonColumn
+
+
+  lifecycleCallbacks: {  }
