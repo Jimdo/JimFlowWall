@@ -4,14 +4,15 @@
 
 <div id="header">
    <div id="boardselect">
-        <select>
+        <label for="boardselection" id="boardlabel">Choose board:</label>
+        <select name="boardselection">
             {% for board in boards %}
                 <option {% if board.name == snapShot.board.name %} selected="selected" {% endif %} data-href="{{ app.request.scheme ~ '://' ~ app.request.host }}{{ path('board_detail', { 'boardId': board.id }) }}">{{ board.name }}</option>
             {% endfor %}
         </select>
     </div>
     <div id="logo">
-        <img src="{{ asset('bundles/jimdojimflowviewboard/images/jimflow.png') }}" />
+        <img src="{{ asset('bundles/jimdojimflowviewboard/images/jimflow.png') }}"/>
     </div>
     <div id="boardowner">
         <span>{{ snapShot.board.name }}</span>
@@ -20,26 +21,29 @@
     <div class="clear"></div>
 </div>
 
-    <div class="board with-{{snapShot.board.columns|length}}-columns">
-        {% for column in snapShot.board.columns%}
-        <div class="column">
-                <div class="header">
-                    <span>{{column.name}}</span>
-                </div>
-                {% for ticket in column.tickets %}
-                <div class="ticket">
-                    <div class="wrapper">
-                        <span class="ticket-meta">
-                            <span class="ticket-id"><a href="{{ ticket.url }}" target="_blank">#{{ ticket.id }}</a></span>
-                            <span class="ticket-type">{{ ticket.type }}</span>
-                        </span>
-                        <span class="ticket-headline">{{ ticket.title }}</span>
-                        <span class="ticket-changedate">{% if ticket.lastChange %}last change {{ ticket.lastChange|date("d.m.Y H:i") }}{% endif %}</span>
-                    </div>
-                </div>
-                {% endfor %}
+<div class="board with-{{snapShot.board.columns|length}}-columns">
+    {% for column in snapShot.board.columns%}
+    <div class="column">
+            <div class="header">
+                <span>{{column.name}}</span>
             </div>
-        {% endfor %}
-        <div class="clear"></div>
-    </div>
+            {% for ticket in column.tickets %}
+            <div class="ticket">
+                <div class="wrapper">
+                    <span class="ticket-meta">
+                        <span class="ticket-id"><a href="{{ ticket.url }}" target="_blank">#{{ ticket.id }}</a></span>
+                        <span class="ticket-type">{{ ticket.type }}</span>
+                    </span>
+                    <span class="ticket-headline">{{ ticket.title }}</span>
+                    <span class="ticket-changedate">{% if ticket.lastChange %}last change {{ ticket.lastChange|date("d.m.Y H:i") }}{% endif %}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <div class="clear"></div>
+</div>
+<div id="footer">
+
+</div>
 {% endblock %}
