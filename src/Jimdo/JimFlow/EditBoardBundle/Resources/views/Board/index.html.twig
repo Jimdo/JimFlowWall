@@ -5,27 +5,24 @@
 
 <div id="menu">
     <div class="action">
-        <a class="button gray right" href="{{ path('board_list') }}">List boards</a>
-    </div>
-    <div class="action">
         <a class="button gray right" href="{{ path('manage_board_new') }}">Create a new board</a>
     </div>
     <div style="clear: both;"></div>
 </div>
 
 <div id="board_list">
-    {% for entity in entities %}
+    {% for board in entities %}
         <div class="item">
             <div class="board_name">
-               {{ entity.name }}
+               <a class="boardListEntry" href="{{ url('board_detail', { 'boardId': board.id }) }}">{{ board.name }}</a></p>
             </div>
 
             <div class="action">
-                <a class="button gray" href="{{ path('manage_board_print', { 'id': entity.id }) }}">print qr codes</a>
+                <a class="button gray" href="{{ path('manage_board_print', { 'id': board.id }) }}">print qr codes</a>
                 <span></span>
             </div>
             <div class="action">
-                <a class="button gray" href="{{ path('manage_board_edit', { 'id': entity.id }) }}">edit board</a>
+                <a class="button gray" href="{{ path('manage_board_edit', { 'id': board.id }) }}">edit board</a>
                 <span></span>
             </div>
             <div style="clear: both;"></div>

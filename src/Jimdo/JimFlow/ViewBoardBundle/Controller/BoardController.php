@@ -11,19 +11,6 @@ use \Symfony\Component\HttpFoundation\Response;
 class BoardController extends Controller
 {
     /**
-     * @Route("/board/list", name="board_list")
-     * @Template()
-     * @return array
-     */
-    public function listAction()
-    {
-        $em = $this->get('doctrine')->getEntityManager();
-        $boards = $em->getRepository('Jimdo\JimFlow\ImportBundle\Entity\Board')->findAllOrdered();
-
-        return array('boards' => $boards);
-    }
-
-    /**
      * @Route("/board/detail/{boardId}", name="board_detail")
      * @Template()
      * @param $boardId

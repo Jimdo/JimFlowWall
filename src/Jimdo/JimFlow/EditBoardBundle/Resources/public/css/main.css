@@ -28,7 +28,6 @@ body, html {
     height: 23px;
     padding: 5px;
     float: left;
-    text-align: center;
 }
 
 #board_list .action {
@@ -192,6 +191,5 @@ a.boardListEntry:link,a.boardListEntry:visited {
 }
 
 a.boardListEntry:hover,a.boardListEntry:active {
-    text-decoration: none;
-    text-shadow: 1px 1px 1px #c2ccd1;
+    text-decoration: underline;
 }

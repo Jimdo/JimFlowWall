@@ -12,7 +12,9 @@
         </select>
     </div>
     <div id="logo">
-        <img src="{{ asset('bundles/jimdojimflowviewboard/images/jimflow.png') }}"/>
+        <a href="{{ path('manage_board') }}">
+            <img src="{{ asset('bundles/jimdojimflowviewboard/images/jimflow.png') }}"/>
+        </a>
     </div>
     <div id="boardowner">
         <span>{{ snapShot.board.name }}</span>
@@ -44,7 +46,7 @@
     <div class="clear"></div>
 </div>
 <div id="footer">
-<a href="http://www.it-agile.de" target="_blank" id="agilelogo"><img src="{{ asset('bundles/jimdojimflowviewboard/images/logo-itagile.png') }}"/></a>
-<a href="http://www.jimdo.com" target="_blank" id="jimdologo"><img src="{{ asset('bundles/jimdojimflowviewboard/images/logo-jimdo.png') }}"/></a>
+    <a href="http://www.it-agile.de" target="_blank" id="agilelogo"><img src="{{ asset('bundles/jimdojimflowviewboard/images/logo-itagile.png') }}"/></a>
+     <a href="http://www.jimdo.com" target="_blank" id="jimdologo"><img src="{{ asset('bundles/jimdojimflowviewboard/images/logo-jimdo.png') }}"/></a>
 </div>
 {% endblock %}

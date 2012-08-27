@@ -1,6 +1,6 @@
 {% extends 'JimdoJimFlowEditBoardBundle::layout.html.twig' %}
 {% block body %}
-<h1>Board creation</h1>
+<h1>Board create</h1>
 
 <form action="{{ path('manage_board_create') }}" method="post" {{ form_enctype(form) }}>
     {% form_theme form 'JimdoJimFlowEditBoardBundle::form_row_template.html.twig' %}
