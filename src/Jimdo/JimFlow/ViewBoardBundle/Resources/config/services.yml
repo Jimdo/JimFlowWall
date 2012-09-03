@@ -26,6 +26,8 @@ services:
     class: Jimdo\JimFlow\ViewBoardBundle\Model\RoutingTicketProviderDecorator
     arguments:
       - @jimdo.trac_ticket_provider
+      - @jimdo.default_ticket_provider
+      - @jimdo.jira_ticket_provider
 
   jimdo.trac_ticket_provider:
     class: Jimdo\JimFlow\ViewBoardBundle\Model\TracTicketProvider
@@ -34,6 +36,16 @@ services:
       - @zend.xml_rpc_client
       - %trac_url%
 
+  jimdo.jira_ticket_provider:
+    class: Jimdo\JimFlow\ViewBoardBundle\Model\JiraTicketProvider
+    arguments:
+      - @jimdo.ticket_factory
+      
+  jimdo.default_ticket_provider:
+    class: Jimdo\JimFlow\ViewBoardBundle\Model\DefaultTicketProvider
+    arguments:
+      - @jimdo.ticket_factory
+      
   jimdo.ticket_factory:
     class: Jimdo\JimFlow\ViewBoardBundle\Model\TicketFactory
 

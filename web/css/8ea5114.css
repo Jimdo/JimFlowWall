@@ -13,6 +13,29 @@ body, html {
     margin-bottom: 15px;
 }
 
+#footer {
+    background-color: #BBB;
+    margin: 20px 0 0 0;
+    border-top: 1px solid #999;
+    padding: 10px 10px 7px 0;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+#footer a {
+    display: block;
+    float: right;
+    margin-right: 15px;
+    opacity: 0.65;
+    outline: none;
+}
+
+#footer a:hover {
+    opacity: 1;
+}
+
 #content {
     margin: 0 auto;
     width: 560px;
@@ -28,7 +51,6 @@ body, html {
     height: 23px;
     padding: 5px;
     float: left;
-    text-align: center;
 }
 
 #board_list .action {
@@ -192,6 +214,6 @@ a.boardListEntry:link,a.boardListEntry:visited {
 }
 
 a.boardListEntry:hover,a.boardListEntry:active {
-    text-decoration: none;
-    text-shadow: 1px 1px 1px #c2ccd1;
+    text-decoration: underline;
+    color: #0882BC;
 }
