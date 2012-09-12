@@ -13,6 +13,9 @@ Jimdo\JimFlow\ImportBundle\Entity\BoardColumn:
       length: 255
     ordering:
       type: integer
+    status:
+      type: string
+      length: 255
   manyToOne:
     board:
       targetEntity: Board

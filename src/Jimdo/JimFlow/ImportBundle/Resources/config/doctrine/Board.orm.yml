@@ -11,6 +11,8 @@ Jimdo\JimFlow\ImportBundle\Entity\Board:
     name:
       type: string
       length: 255
+    track:
+      type: boolean
   oneToMany:
     boardColumns:
       targetEntity: BoardColumn

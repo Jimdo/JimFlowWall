@@ -3,6 +3,7 @@ services:
     class: Jimdo\JimFlow\ImportBundle\Mapper\JsonToTicketMapper
     arguments:
       - @doctrine.orm.entity_manager
+      - @jimdo.ticket_track
 
   jimdo.file_loader:
     class: Jimdo\JimFlow\ImportBundle\FileHandler\FileLoader
@@ -21,3 +22,10 @@ services:
       - @jimdo.file_locator
       - @jimdo.file_loader
       - @jimdo.json_to_ticket_mapper
+      - @jimdo.ticket_track
+
+  jimdo.ticket_track:
+    class: Jimdo\JimFlow\ImportBundle\TicketTrack\TicketTrack
+    arguments:
+      - @doctrine.orm.entity_manager
+      - @jimdo.routing_ticket_provider_decorator

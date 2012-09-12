@@ -19,20 +19,33 @@ class RoutingTicketProviderDecorator implements TicketProviderInterface {
         $this->defaultTicketProvider = $defaultTicketProvider;
         $this->jiraTicketProvider = $jiraTicketProvider;
     }
-
-    public function getTicketByCode($code)
+    
+    private function getTicketProvider($code)
     {
-        $ticket = null;
         switch($code[0]) {
             case 'T':
-                $ticket = $this->tracTicketProvider->getTicketByCode($code);
+                $ticketProvider = $this->tracTicketProvider;
                 break;
             case 'J':
-                $ticket = $this->jiraTicketProvider->getTicketByCode($code);
+                $ticketProvider = $this->jiraTicketProvider;
                 break;
             default:
-                $ticket = $this->defaultTicketProvider->getTicketByCode($code);
+                $ticketProvider = $this->defaultTicketProvider;
         };
-        return $ticket;
+        return $ticketProvider;        
+    }
+    
+    public function getTicketByCode($code)
+    {
+        $ticketProvider = $this->getTicketProvider($code);
+        
+        return $ticketProvider->getTicketByCode($code);
+    }
+    
+    public function setTicketStatusByCodeAndStatus($code, $status)
+    {
+        $ticketProvider = $this->getTicketProvider($code);
+        
+        return $ticketProvider->setTicketStatusByCodeAndStatus($code, $status);
     }
 }

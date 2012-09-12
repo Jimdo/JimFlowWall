@@ -38,4 +38,13 @@ class TracTicketProvider implements TicketProviderInterface {
 
         return $ticket;
     }
+    
+    public function setTicketStatusByCodeAndStatus($code, $status)
+    {
+        $id = intval(str_replace(self::CODE_STARTS_WITH, '', $code));
+        
+        $commentText = 'Ticket has been moved.';
+        
+        $this->xmlRpcClient->call('ticket.update', array($id, $commentText, array('status' => $status), true));
+    }
 }

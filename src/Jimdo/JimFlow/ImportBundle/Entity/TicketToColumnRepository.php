@@ -52,4 +52,16 @@ class TicketToColumnRepository extends EntityRepository
 
         return $qb->getQuery()->getOneOrNullResult();
     }
+    
+    public function getTicketToColumsBySnapShotAndChangeIsTrue($snapShotId) 
+    {
+        $qb = $this->createQueryBuilder('tc')
+                   ->select('tc')
+                   ->leftJoin('tc.snapShot', 's')
+                   ->where('s.id = ?1')
+                   ->andWhere('tc.is_change = true')
+                   ->setParameter(1, $snapShotId);
+
+        return $qb->getQuery()->getResult();   
+    }
 }

@@ -13,6 +13,10 @@ class BoardType extends AbstractType
             ->add('name', 'text', array(
                     'label' => 'Board Name'
                 ))
+            ->add('track', 'checkbox', array(
+                    'label' => 'Track Board',
+                    'required'  => false
+            ))
             ->add('boardColumns', 'collection', array(
                                                      'type' => new BoardColumnType(),
                                                      'allow_add' => true,

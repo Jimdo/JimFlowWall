@@ -18,6 +18,7 @@ class JiraTicketProvider implements TicketProviderInterface {
 
     public function getTicketByCode($code)
     {
+        //todo
         $id = intval(str_replace(self::CODE_STARTS_WITH, '', $code));
 
         $ticket = $this->ticketFactory->build();
@@ -32,5 +33,10 @@ class JiraTicketProvider implements TicketProviderInterface {
         $ticket->setUrl($url);
 
         return $ticket;
+    }
+    
+    public function setTicketStatusByCodeAndStatus($code, $status)
+    {
+        //todo
     }
 }

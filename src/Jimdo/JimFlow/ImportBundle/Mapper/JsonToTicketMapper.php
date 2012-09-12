@@ -11,6 +11,7 @@ use \Jimdo\JimFlow\ImportBundle\Entity\TicketToColumn;
 class JsonToTicketMapper
 {
     private $em;
+    private $snapShot;
 
     public function __construct($em) {
         $this->em = $em;
@@ -18,8 +19,8 @@ class JsonToTicketMapper
 
     public function run($jsonObject) {
 
-        $snapShot = $this->generateSnaphot($jsonObject);
-        $this->generateTickets($jsonObject, $snapShot);
+        $this->generateSnaphot($jsonObject);
+        $this->generateTickets($jsonObject);
     }
 
     public function generateSnaphot($jsonObject) {
@@ -33,16 +34,16 @@ class JsonToTicketMapper
 
         $this->em->persist($snapShot);
         $this->em->flush();
-
-        return $snapShot;
+        
+        $this->snapShot = $snapShot;
     }
 
-    public function generateTickets($jsonObject, $snapShot) {
-        $boardColumns = $this->em->getRepository('Jimdo\JimFlow\ImportBundle\Entity\BoardColumn')->getColumnsByBoardIdOrderedAsc($snapShot->getBoard()->getId());
+    public function generateTickets($jsonObject) {
+        $boardColumns = $this->em->getRepository('Jimdo\JimFlow\ImportBundle\Entity\BoardColumn')->getColumnsByBoardIdOrderedAsc($this->snapShot->getBoard()->getId());
 
         foreach($jsonObject->board->informations as $information) {
             $ticket = new TicketToColumn();
-            $ticket->setSnapShot($snapShot);
+            $ticket->setSnapShot($this->snapShot);
             $ticket->setId($information->data);
             $ticket->setBoardColumn($boardColumns[$information->column]);
 
@@ -56,6 +57,11 @@ class JsonToTicketMapper
         }
 
         $this->em->flush();
+    }
+    
+    public function getSnapShotId()
+    {
+        return $this->snapShot->getId();
     }
 
 }

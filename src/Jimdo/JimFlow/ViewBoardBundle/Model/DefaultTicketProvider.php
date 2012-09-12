@@ -25,4 +25,9 @@ class DefaultTicketProvider implements TicketProviderInterface {
 
         return $ticket;
     }
+    
+    public function setTicketStatusByCodeAndStatus($code, $status)
+    {
+        //todo
+    }
 }

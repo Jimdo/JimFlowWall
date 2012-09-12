@@ -26,6 +26,11 @@ class BoardColumn
     private $ordering;
 
     /**
+     * @var string $status
+     */
+    private $status;    
+    
+    /**
      * @var Jimdo\JimFlow\ImportBundle\Entity\Board $board
      */
     private $board;
@@ -85,6 +90,26 @@ class BoardColumn
     {
         return $this->ordering;
     }
+    
+    /**
+     * Set status
+     *
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }    
 
     /**
      * Set board

@@ -29,6 +29,10 @@ class Board
      */
     private $boardSnapShots;
 
+     /**
+     * @var boolean $track
+     */
+    private $track;
 
     /**
      * Get id
@@ -60,6 +64,26 @@ class Board
         return $this->name;
     }
 
+    /**
+     * Get track
+     *
+     * @return boolean 
+     */
+    public function getTrack()
+    {
+        return $this->track;
+    }
+
+    /**
+     * Set track
+     *
+     * @param boolean $track
+     */
+    public function setTrack($track)
+    {
+        $this->track = $track;
+    }    
+    
     /**
      * add boardColumn
      *
