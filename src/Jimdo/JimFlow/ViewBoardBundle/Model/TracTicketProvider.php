@@ -43,7 +43,7 @@ class TracTicketProvider implements TicketProviderInterface {
     {
         $id = intval(str_replace(self::CODE_STARTS_WITH, '', $code));
         
-        $commentText = 'Ticket has been moved.';
+        $commentText = 'Movement of the Kanban Card on the physical board has been detected.';
         
         $this->xmlRpcClient->call('ticket.update', array($id, $commentText, array('status' => $status), true));
     }
