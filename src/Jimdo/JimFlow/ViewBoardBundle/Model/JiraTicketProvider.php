@@ -35,7 +35,7 @@ class JiraTicketProvider implements TicketProviderInterface {
         return $ticket;
     }
     
-    public function setTicketStatusByCodeAndStatus($code, $status)
+    public function setTicketStatusByCodeAndStatus($code, $status, $newBoardColumn)
     {
         //todo
     }

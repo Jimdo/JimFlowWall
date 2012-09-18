@@ -6,5 +6,5 @@ interface TicketProviderInterface {
 
     public function getTicketByCode($code);
     
-    public function setTicketStatusByCodeAndStatus($code, $status);
+    public function setTicketStatusByCodeAndStatus($code, $status, $newBoardColumn);
 }

@@ -21,8 +21,9 @@ class TicketTrack
         if ($snapShot->getBoard()->getTrack() === true) 
         {
             foreach ($ticketToColumns as $ticketToColumn) {
+                $newBoardColumn = $ticketToColumn->getBoardColumn()->getName();
                 $status =  $ticketToColumn->getBoardColumn()->getStatus();
-                $this->ticketProvider->setTicketStatusByCodeAndStatus($ticketToColumn->getId(), $status);
+                $this->ticketProvider->setTicketStatusByCodeAndStatus($ticketToColumn->getId(), $status, $newBoardColumn);
             }
         }  
     }

@@ -42,10 +42,10 @@ class RoutingTicketProviderDecorator implements TicketProviderInterface {
         return $ticketProvider->getTicketByCode($code);
     }
     
-    public function setTicketStatusByCodeAndStatus($code, $status)
+    public function setTicketStatusByCodeAndStatus($code, $status, $newBoardColumn)
     {
         $ticketProvider = $this->getTicketProvider($code);
         
-        return $ticketProvider->setTicketStatusByCodeAndStatus($code, $status);
+        return $ticketProvider->setTicketStatusByCodeAndStatus($code, $status, $newBoardColumn);
     }
 }

@@ -39,11 +39,11 @@ class TracTicketProvider implements TicketProviderInterface {
         return $ticket;
     }
     
-    public function setTicketStatusByCodeAndStatus($code, $status)
+    public function setTicketStatusByCodeAndStatus($code, $status, $newBoardColumn)
     {
         $id = intval(str_replace(self::CODE_STARTS_WITH, '', $code));
         
-        $commentText = 'Movement of the Kanban Card on the physical board has been detected.';
+        $commentText = sprintf('Movement of the Kanban Card on the physical board has been detected. New Column: %s', $newBoardColumn);
         
         $this->xmlRpcClient->call('ticket.update', array($id, $commentText, array('status' => $status), true));
     }

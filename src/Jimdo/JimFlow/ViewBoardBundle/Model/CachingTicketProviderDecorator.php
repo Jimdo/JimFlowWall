@@ -26,4 +26,7 @@ class CachingTicketProviderDecorator implements TicketProviderInterface {
             return $this->routingTicketProvidorDecorator->getTicketByCode($code);
         }
     }
+    
+    public function setTicketStatusByCodeAndStatus($code, $status, $newBoardColumn)
+    {}
 }
