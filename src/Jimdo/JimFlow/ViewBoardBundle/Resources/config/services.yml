@@ -40,6 +40,10 @@ services:
     class: Jimdo\JimFlow\ViewBoardBundle\Model\JiraTicketProvider
     arguments:
       - @jimdo.ticket_factory
+      - %jira_protocol%
+      - %jira_url%
+      - %jira_user%
+      - %jira_password%
       
   jimdo.default_ticket_provider:
     class: Jimdo\JimFlow\ViewBoardBundle\Model\DefaultTicketProvider

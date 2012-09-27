@@ -22,4 +22,10 @@
     trac_password     = 'mypassword'
     trac_url          = 'trac.example.org'
 
+    jira_user         = 'admin'
+    jira_password     = 'admin'
+    jira_protocol     = 'http'
+    jira_url          = 'jira.example.org'
+
+
     wkhtmltopdf_bin_path = '/usr/bin/wkhtmltopdf'
