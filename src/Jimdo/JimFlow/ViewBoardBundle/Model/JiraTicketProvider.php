@@ -51,6 +51,25 @@ class JiraTicketProvider implements TicketProviderInterface {
     
     public function setTicketStatusByCodeAndStatus($code, $status, $newBoardColumn)
     {
-        //todo
+        $id = intval(str_replace(self::CODE_STARTS_WITH, '', $code));
+        
+        $commentText = sprintf('Movement of the Kanban Card on the physical board has been detected. New Column: %s', $newBoardColumn);        
+        
+        $content = sprintf('{"transition": {"id": %s}, "update": {"comment": [{"add": {"body": "%s"}}]}}', $status, $commentText);
+                
+        $url = sprintf('%s://%s/rest/api/2/issue/%s/transitions', $this->jira_protocol, $this->jira_url, $id);
+        
+        $request = new Request('POST', '/', $url);
+        
+        $userPassword = sprintf('%s:%s', $this->jira_user, $this->jira_password);
+        
+        $request->addHeader('Authorization: Basic '.base64_encode($userPassword));
+        $request->addHeader('Content-Type:application/json');
+        $request->setContent($content);
+
+        $response = new Response();
+
+        $client = new FileGetContents();
+        $client->send($request, $response);
     }
 }
