@@ -4,6 +4,9 @@ namespace Jimdo\JimFlow\ViewBoardBundle\Model;
 
 use \Jimdo\JimFlow\ViewBoardBundle\Model\TicketProviderInterface;
 use \Jimdo\JimFlow\ViewBoardBundle\Model\TicketFactory;
+use Buzz\Message\Request;
+use Buzz\Message\Response;
+use Buzz\Client\FileGetContents;
 
 class JiraTicketProvider implements TicketProviderInterface {
 
