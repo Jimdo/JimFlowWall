@@ -120,7 +120,7 @@ class BoardController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('JimdoJimFlowImportBundle:Board')->find($id);
+        $entity = $em->getRepository('JimdoJimFlowImportBundle:Board')->getBoardByIdWithOrderedColumns($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Board entity.');

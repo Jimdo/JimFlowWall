@@ -21,4 +21,16 @@ class BoardRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function getBoardByIdWithOrderedColumns($boardId)
+    {
+        $qb = $this->createQueryBuilder('b')
+                   ->select('b, bc')
+                   ->leftJoin('b.boardColumns', 'bc')
+                   ->where('b.id = ?1')
+                   ->addOrderBy('bc.ordering', 'ASC')
+                   ->setParameter('1', $boardId);
+
+        return $qb->getQuery()->getOneOrNullResult();        
+    }
+
 }
