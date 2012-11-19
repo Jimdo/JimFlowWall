@@ -7,6 +7,8 @@
 
     {{ form_row(form.name) }}
 
+    {{ form_row(form.track) }}
+
     {{ form_widget(form._token) }}
 
     <ul class="boardColumns" id="sortable" data-prototype="{{ form_widget(form.boardColumns.get('prototype')) | e }}">
