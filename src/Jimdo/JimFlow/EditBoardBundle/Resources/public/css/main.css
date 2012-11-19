@@ -177,11 +177,6 @@ ul.boardColumns {
     clear: both;
 }
 
-.boardColumns .form_row .label {
-    margin-top: 5px;
-    width: 30px;
-    float: left;
-}
 
 .boardColumns .form_row .field {
     float: left;
